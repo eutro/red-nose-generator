@@ -1,5 +1,6 @@
-# Author: Benedek Szilvasy
+﻿# Author: Benedek Szilvasy
 # Created: March 2015
+# Version: 1.1
 #
 # Benedek Szilvasy Copyright (c) 2015. All rights reserved.
 
@@ -19,43 +20,39 @@ plainBg = True
 
 def mainMenu():
 	window.blit(title.render(('''Red Nose Generator.'''),True,(0, 0, 0)),(175, 75))
-	window.blit(pygame.font.SysFont("monospace", 20).render(('''Version 1.0'''),True,(0, 0, 0)),(175, 110))
-	if mousePos[0] > 197 and mousePos[0] < 459 and mousePos[1] > 150 and mousePos[1] < 190:
-		window.blit(title.render(('''Generate Nose!'''),True,(0, 0, 0),(63, 0, 127)),(200, 150))
-		pygame.draw.rect(window, (0, 0, 0), (197, 150, 262, 38), 5)
+	window.blit(pygame.font.SysFont("arial black", 20).render(('''Version 1.1'''),True,(0, 0, 0)),(175, 110))
+	if mousePos[0] > 197 and mousePos[0] < 459 and mousePos[1] > 180 and mousePos[1] < 220:
+		window.blit(buttonFont.render(('''   Generate Nose!   '''),True,(0, 0, 0),(63, 0, 127)),(200, 180))
 		if mouseUp:
 			return 'Go'
 	else:
-		window.blit(title.render(('''Generate Nose!'''),True,(0, 0, 0),(127, 0, 255)),(200, 150))
-		pygame.draw.rect(window, (0, 0, 0), (197, 150, 262, 38), 5)
+		window.blit(buttonFont.render(('''   Generate Nose!   '''),True,(0, 0, 0),(127, 0, 255)),(200, 180))
+	pygame.draw.rect(window, (0, 0, 0), (197, 180, 265, 38), 5)
 	if plainBg:
-		if mousePos[0] > 147 and mousePos[0] < 525 and mousePos[1] > 225 and mousePos[1] < 265:
-			window.blit(title.render(('''Plain Background (On)'''),True,(0, 0, 0),(63, 0, 127)),(150, 225))
-			pygame.draw.rect(window, (0, 0, 0), (147, 225, 379, 38), 5)
+		if mousePos[0] > 147 and mousePos[0] < 525 and mousePos[1] > 255 and mousePos[1] < 295:
+			window.blit(buttonFont.render(('''    Plain Background (On)    '''),True,(0, 0, 0),(63, 0, 127)),(150, 255))
 			if mouseUp:
 				global plainBg
 				plainBg = False
 		else:
-			window.blit(title.render(('''Plain Background (On)'''),True,(0, 0, 0),(127, 0, 255)),(150, 225))
-			pygame.draw.rect(window, (0, 0, 0), (147, 225, 379, 38), 5)
+			window.blit(buttonFont.render(('''    Plain Background (On)    '''),True,(0, 0, 0),(127, 0, 255)),(150, 255))
+		pygame.draw.rect(window, (0, 0, 0), (147, 255, 374, 38), 5)
 	else:
-		if mousePos[0] > 147 and mousePos[0] < 525 and mousePos[1] > 225 and mousePos[1] < 265:
-			window.blit(title.render(('''Plain Background (Off)'''),True,(0, 0, 0),(63, 0, 127)),(150, 225))
-			pygame.draw.rect(window, (0, 0, 0), (147, 225, 378, 38), 5)
+		if mousePos[0] > 147 and mousePos[0] < 525 and mousePos[1] > 255 and mousePos[1] < 295:
+			window.blit(buttonFont.render(('''    Plain Background (Off)    '''),True,(0, 0, 0),(63, 0, 127)),(150, 255))
 			if mouseUp:
 				global plainBg
 				plainBg = True
 		else:
-			window.blit(title.render(('''Plain Background (Off)'''),True,(0, 0, 0),(127, 0, 255)),(150, 225))
-			pygame.draw.rect(window, (0, 0, 0), (147, 225, 378, 38), 5)
-	if mousePos[0] > 198 and mousePos[0] < 458 and mousePos[1] > 300 and mousePos[1] < 340:
-		window.blit(title.render(('''      Credits       '''),True,(0, 0, 0),(63, 0, 127)),(150, 300))
-		pygame.draw.rect(window, (0, 0, 0), (150, 300, 360, 38), 5)
+			window.blit(buttonFont.render(('''    Plain Background (Off)    '''),True,(0, 0, 0),(127, 0, 255)),(150, 255))
+		pygame.draw.rect(window, (0, 0, 0), (147, 255, 376, 38), 5)
+	if mousePos[0] > 198 and mousePos[0] < 458 and mousePos[1] > 330 and mousePos[1] < 370:
+		window.blit(buttonFont.render(('''                Credits                 '''),True,(0, 0, 0),(63, 0, 127)),(150, 330))
 		if mouseUp:
 			return 'Credits'
 	else:
-		window.blit(title.render(('''      Credits       '''),True,(0, 0, 0),(127, 0, 255)),(150, 300))
-		pygame.draw.rect(window, (0, 0, 0), (150, 300, 360, 38), 5)
+		window.blit(buttonFont.render(('''                Credits                 '''),True,(0, 0, 0),(127, 0, 255)),(150, 330))
+	pygame.draw.rect(window, (0, 0, 0), (150, 330, 360, 38), 5)
 	return 'Menu'
 
 def creds():
@@ -111,8 +108,9 @@ toLoad = ['Background', 'MummyNose', 'NingaNose', 'CavemanNose', 'RoboNose', 'Se
 loaded = False
 page = 'Menu'
 amountLoaded = 0
-title = pygame.font.SysFont("monospace", 30)
-smallerType = pygame.font.SysFont("monospace", 20)
+title = pygame.font.SysFont("arial black", 30)
+buttonFont = pygame.font.SysFont("arial", 30)
+smallerType = pygame.font.SysFont("arial", 25)
 loadingPercent = 0
 txt = title.render(('''Loading. Please wait.'''),True,(0, 0, 0))
 graphics = []
